@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS IPFS API name example</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
+      crossorigin
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/ipfs-css@0.12.0/ipfs.css"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="./src/app.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <script type="module" src="./src/app.js" defer></script>
+  </head>
+
+  <body class="montserrat f5">
+    <header class="flex items-center pa3 bg-navy bb bw3 b--aqua">
+      <a href="https://ipfs.io" title="home">
+        <img
+          alt="IPFS logo"
+          src="./public/ipfs-logo.svg"
+          style="height: 50px"
+          class="v-top"
+        />
+      </a>
+    </header>
+
+    <main class="pa4-l bg-snow mw7 mv5 center pa4" hidden>
+      <h1 class="pa0 f2 ma0 mb4 aqua tc">IPFS Client</h1>
+      <h3>Enter IPFS API details</h3>
+
+      <form id="connect-to-api">
+        <label for="grpc-input" class="f5 ma0 pb2 tracked aqua fw4 db"
+          >GRPC</label
+        >
+        <input
+          class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+          id="grpc-input"
+          name="grpc-input"
+          type="text"
+          placeholder="/ip4/127.0.0.1/tcp/5003"
+          required
+        />
+
+        <label for="http-input" class="f5 ma0 pb2 tracked aqua fw4 db"
+          >HTTP</label
+        >
+        <input
+          class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+          id="http-input"
+          name="http-input"
+          type="text"
+          value="/ip4/127.0.0.1/tcp/5001"
+          required
+        />
+
+        <button
+          class="
+            button-reset
+            pv3
+            tc
+            bn
+            bg-animate bg-black-80
+            hover-bg-aqua
+            white
+            pointer
+            w-100
+          "
+          id="connect-submit"
+          type="submit"
+        >
+          Connect
+        </button>
+      </form>
+
+      <h3>Output</h3>
+
+      <div class="window">
+        <div class="header"></div>
+        <div id="terminal" class="terminal">
+          <div id="output"></div>
+        </div>
+      </div>
+    </main>
+    
+    <main class="pa4-l bg-snow mw7 mv5 center pa4"> <!--Added by Prateek for indicating General user registration and providing fields for 
+                                                    general user registration in UI starts here-->
+      <h1 class="pa0 f2 ma0 mb4 aqua tc">General User Registration</h1> 
+      <h3>Enter General User details</h3>
+    
+
+      <form id="register-general-user">
+        <label for="general-user-name" class="f5 ma0 pb2 tracked aqua fw4 db"
+          >Name</label
+        >
+      <input
+        class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+        id="general-user-name"
+        name="general-user-name"
+        type="text"
+        required
+      />
+
+      <label for="general-user-age" class="f5 ma0 pb2 tracked aqua fw4 db"
+        >Age</label
+      >
+      <input
+        class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+        id="general-user-age"
+        name="general-user-age"
+        type="text"
+      />
+
+      <label for="general-user-address" class="f5 ma0 pb2 tracked aqua fw4 db"
+        >Address</label
+      >
+      <input
+        class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+        id="general-user-address"
+        name="general-user-address"
+        type="text"
+      />
+
+      <label for="general-user-country" class="f5 ma0 pb2 tracked aqua fw4 db"
+        >Country</label
+      >
+      <input
+        class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+        id="general-user-country"
+        name="general-user-country"
+        type="text"
+        required
+      />
+
+      <label for="general-user-phonenumber" class="f5 ma0 pb2 tracked aqua fw4 db"
+        >Phone Number</label
+      >
+      <input
+        class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+        id="general-user-phonenumber"
+        name="general-user-phonenumber"
+        type="text"
+      />
+
+      <label for="general-user-emailaddress" class="f5 ma0 pb2 tracked aqua fw4 db"
+        >Email address</label
+      >
+      <input
+        class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+        id="general-user-emailaddress"
+        name="general-user-emailaddress"
+        type="text"
+      />
+
+      <button
+        class="
+          button-reset
+          pv3
+          tc
+          bn
+          bg-animate bg-black-80
+          hover-bg-aqua
+          white
+          pointer
+          w-100
+        "
+        id="register-general-user-submit"
+        type="submit"
+      >
+        Register
+      </button>
+    </form>
+
+    <h3>Output</h3>
+      <div id="register-general-user-output">Fill output here</div>
+  </main>  <!--Added by Prateek for indicating General user registration and providing fields for 
+               general user registration in UI ends here-->
+
+  <main class="pa4-l bg-snow mw7 mv5 center pa4"> <!--Added by Prateek for indicating Laboratory or Hospital registration and providing fields for 
+                                                    laboratory or hospital registration in UI starts here-->
+    <h1 class="pa0 f2 ma0 mb4 aqua tc">Hospital/ Laboratory Registration</h1> 
+    <h3>Enter Hospital/Laboratory details</h3>
+
+
+    <form id="register-hospital-or-laboratory">
+      <label for="hospital-or-laboratory-name" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Hospital/Laboratory Name</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+      id="hospital-or-laboratory-name"
+      name="hospital-or-laboratory-name"
+      type="text"
+      required
+      />
+
+      <label for="hospital-or-laboratory-address" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Hospital/Laboratory Address</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="hospital-or-laboratory-address"
+      name="hospital-or-laboratory-address"
+      type="text"
+      required
+      />
+
+      <label for="hospital-or-laboratory-phonenumber" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Hospital/Laboratory Phone Number</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="hospital-or-laboratory-phonenumber"
+      name="hospital-or-laboratory-phonenumber"
+      type="text"
+      required
+      />
+
+      <label for="hospital-or-laboratory-emailaddress" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Hospital/Laboratory Email address</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="hospital-or-laboratory-emailaddress"
+      name="hospital-or-laboratory-emailaddress"
+      type="text"
+      required
+      />
+
+      <button
+      class="
+      button-reset
+      pv3
+      tc
+      bn
+      bg-animate bg-black-80
+      hover-bg-aqua
+      white
+      pointer
+      w-100
+      "
+      id="register-hospital-or-laboratory-submit"
+      type="submit"
+      >
+      Register
+      </button>
+      </form>
+
+      <h3>Output</h3>
+      <div id="register-hoisptal-or-laboratory-output">Fill output here</div>
+  </main>  <!--Added by Prateek for indicating Laboratory or Hospital registration and providing fields for 
+             laboratory or hospital registration in UI ends here-->
+
+  <main class="pa4-l bg-snow mw7 mv5 center pa4"> <!--Added by Prateek for indicating Doctor registration and providing fields for 
+                                                    doctor registration in UI starts here-->
+    <h1 class="pa0 f2 ma0 mb4 aqua tc">Doctor Registration</h1> 
+    <h3>Enter Doctor details</h3>
+
+    <form id="register-doctor">
+      <label for="doctor-name" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Name</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+      id="doctor-name"
+      name="doctor-name"
+      type="text"
+      required
+      />
+
+      <label for="doctor-speciality" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Doctor Speciality</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="doctor-speciality"
+      name="doctor-speciality"
+      type="text"
+      required
+      />
+
+      <label for="doctor-registrationnumber" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Doctor Registration Number</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="doctor-registrationnumber"
+      name="doctor-registrationnumber"
+      type="text"
+      required
+      />
+
+      <button
+      class="
+      button-reset
+      pv3
+      tc
+      bn
+      bg-animate bg-black-80
+      hover-bg-aqua
+      white
+      pointer
+      w-100
+      "
+      id="register-doctor-submit"
+      type="submit"
+      >
+      Register
+      </button>
+    </form>
+
+    <h3>Output</h3>
+      <div id="register-doctor-output">Fill output here</div>
+  </main>  <!--Added by Prateek for indicating Doctor registration and providing fields for
+          doctor registration in UI ends here-->
+
+  <main class="pa4-l bg-snow mw7 mv5 center pa4"> <!--Added by Prateek for indicating Insurance Company registration and providing fields for 
+                                                  insurance company registration in UI starts here-->
+    <h1 class="pa0 f2 ma0 mb4 aqua tc">Insurance Company Registration</h1> 
+    <h3>Enter Insurance company details</h3>
+
+    <form id="register-insurancecompany">
+      <label for="insurancecompany-name" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Insurance Company Name</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+      id="insurancecompany-name"
+      name="insurancecompany-name"
+      type="text"
+      required
+      />
+
+      <label for="insurancecompany-address" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Insurance Company Address</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="insurancecompany-address"
+      name="insuracecompany-address"
+      type="text"
+      required
+      />
+
+      <label for="insurancecompany-phonenumber" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Insurance Company Phone Number</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="insurancecompany-phonenumber"
+      name="insurancecompany-phonenumber"
+      type="text"
+      required
+      />
+
+      <label for="insurancecompany-emailaddress" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Insurance Company Email address</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+      id="insurancecompany-emailaddress"
+      name="insurancecompany-emailaddress"
+      type="text"
+      required
+      />
+
+      <button
+      class="
+      button-reset
+      pv3
+      tc
+      bn
+      bg-animate bg-black-80
+      hover-bg-aqua
+      white
+      pointer
+      w-100
+      "
+      id="register-insurancecompany-submit"
+      type="submit"
+      >
+      Register
+      </button>
+    </form>
+
+    <h3>Output</h3>
+    <div id="register-insurancecompany-output">Fill output here</div>
+  </main>  <!--Added by Prateek for indicating Insurance Company Registration and providing fields for 
+              Insurance company registration in UI ends here-->
+
+  <main class="pa4-l bg-snow mw7 mv5 center pa4"> <!--Added by Prateek for indicating User Login and providing fields for 
+                                                      user login in UI starts here-->
+    <h1 class="pa0 f2 ma0 mb4 aqua tc">User Login</h1> 
+    <h3>Enter Key</h3>
+
+    <form id="login-user">
+      <label for="login-key" class="f5 ma0 pb2 tracked aqua fw4 db"
+      >Login Key</label
+      >
+      <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+      id="login-key"
+      name="login-key"
+      type="text"
+      required
+      />
+
+      <button
+      class="
+      button-reset
+      pv3
+      tc
+      bn
+      bg-animate bg-black-80
+      hover-bg-aqua
+      white
+      pointer
+      w-100
+      "
+      id="login-user-submit"
+      type="submit"
+      >
+      Login
+      </button>
+    </form>
+
+    <h3>Output</h3>
+    <div id="login-user-output">Fill output here</div>
+  </main>  <!--Added by Prateek for indicating User Login and providing fields for 
+             user login in UI ends here-->
+
+  <main class="pa4-l bg-snow mw7 mv5 center pa4" id="main-general-user-details" hidden> <!--Added by Prateek for for showing fields for general user after login starts here-->
+    <h1 class="pa0 f2 ma0 mb4 aqua tc">General User Screen</h1> 
+    <h3>General User details</h3>
+    <form id="general-user-retrieved">
+    <label for="general-user-name-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+    >Name</label
+    >
+    <label
+    class="f5 ma0 pb2 tracked aqua fw4 db"
+    id="general-user-name-retrieved"
+    name="general-user-name-retrieved"
+    ></label>
+
+    <label for="general-user-age-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+    >Age</label
+    >
+    <label
+    class="f5 ma0 pb2 tracked aqua fw4 db"
+    id="general-user-age-retrieved"
+    name="general-user-age-retrieved"></label>
+
+    <label for="general-user-address-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+    >Address</label
+    >
+    <label
+    class="f5 ma0 pb2 tracked aqua fw4 db"
+    id="general-user-address-retrieved"
+    name="general-user-address-retrieved"></label>
+
+    <label for="general-user-country-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+    >Country</label
+    >
+    <label
+    class="f5 ma0 pb2 tracked aqua fw4 db"
+    id="general-user-country-retrieved"
+    name="general-user-country-retrieved"></label>
+
+    <label for="general-user-phonenumber-retrievedr" class="f5 ma0 pb2 tracked aqua fw4 db"
+    >Phone Number</label
+    >
+    <label
+    class="f5 ma0 pb2 tracked aqua fw4 db"
+    id="general-user-phonenumber-retrieved"
+    name="general-user-phonenumber-retrieved"></label>
+
+    <label for="general-user-emailaddress-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+    >Email address</label>
+    <label
+    class="f5 ma0 pb2 tracked aqua fw4 db"
+    id="general-user-emailaddress-retrieved"
+    name="general-user-emailaddress-retrieved"></label>
+
+    <label for="general-user-datetosaveinipfs" class="f5 ma0 pb2 tracked aqua fw4 db"
+    >Enter data to be saved in IPFS</label>
+    <input
+      class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+      id="general-user-datatosaveinipfs"
+      name="general-user-datatosaveinipfs"
+      type="text"
+      required
+    />
+
+    <button
+    class="
+    button-reset
+    pv3
+    tc
+    bn
+    bg-animate bg-black-80
+    hover-bg-aqua
+    white
+    pointer
+    w-100
+    "
+    id="savedatainipfs-general-user-submit"
+    type="submit"
+    >
+    Save Data in IPFS
+    </button>
+
+    <h3>Output</h3>
+    <div id="savedatainipfs-general-user-output">Fill output here</div>
+  </form>
+</main>  <!--Added by Prateek for for showing fields for general user after login ends here-->
+
+
+</body>
+</html>
