@@ -446,52 +446,66 @@
     <label for="general-user-name-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
     >Name</label
     >
-    <label
-    class="f5 ma0 pb2 tracked aqua fw4 db"
+    <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
     id="general-user-name-retrieved"
     name="general-user-name-retrieved"
-    ></label>
+    type="text"
+    readonly
+    />
 
     <label for="general-user-age-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
     >Age</label
     >
-    <label
-    class="f5 ma0 pb2 tracked aqua fw4 db"
+    <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
     id="general-user-age-retrieved"
-    name="general-user-age-retrieved"></label>
+    name="general-user-age-retrieved"
+    type="text"
+    readonly
+    />
 
     <label for="general-user-address-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
     >Address</label
     >
-    <label
-    class="f5 ma0 pb2 tracked aqua fw4 db"
+    <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
     id="general-user-address-retrieved"
-    name="general-user-address-retrieved"></label>
+    name="general-user-address-retrieved"
+    type="text"
+    readonly/>
 
     <label for="general-user-country-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
     >Country</label
     >
-    <label
-    class="f5 ma0 pb2 tracked aqua fw4 db"
+    <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
     id="general-user-country-retrieved"
-    name="general-user-country-retrieved"></label>
+    name="general-user-country-retrieved"
+    type="text"
+    readonly/>
 
     <label for="general-user-phonenumber-retrievedr" class="f5 ma0 pb2 tracked aqua fw4 db"
     >Phone Number</label
     >
-    <label
-    class="f5 ma0 pb2 tracked aqua fw4 db"
+    <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
     id="general-user-phonenumber-retrieved"
-    name="general-user-phonenumber-retrieved"></label>
+    name="general-user-phonenumber-retrieved"
+    type="text"
+    readonly
+    />
 
     <label for="general-user-emailaddress-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
     >Email address</label>
-    <label
-    class="f5 ma0 pb2 tracked aqua fw4 db"
+    <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
     id="general-user-emailaddress-retrieved"
-    name="general-user-emailaddress-retrieved"></label>
+    name="general-user-emailaddress-retrieved"
+    type="text"
+    readonly/>
 
-    <label for="general-user-datetosaveinipfs" class="f5 ma0 pb2 tracked aqua fw4 db"
+    <!--<label for="general-user-datetosaveinipfs" class="f5 ma0 pb2 tracked aqua fw4 db"
     >Enter data to be saved in IPFS</label>
     <input
       class="input-reset bn black-80 bg-white pa3 w-100 mb3"
@@ -520,10 +534,233 @@
     </button>
 
     <h3>Output</h3>
-    <div id="savedatainipfs-general-user-output">Fill output here</div>
+    <div id="savedatainipfs-general-user-output">Fill output here</div>-->
   </form>
 </main>  <!--Added by Prateek for for showing fields for general user after login ends here-->
 
+<main class="pa4-l bg-snow mw7 mv5 center pa4" id="main-hospital-or-laboratory-details" hidden> <!--Added by Prateek for for showing fields for hospital or laboratory after login starts here-->
+  <h1 class="pa0 f2 ma0 mb4 aqua tc">Hospital/Laboratory Screen</h1> 
+  <h3>Hospital/Laboratory details</h3>
+  <form id="hospital-or-laboratory-retrieved">
+  <label for="hospital-or-laboratory-name-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Name</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="hospital-or-laboratory-name-retrieved"
+  name="hospital-or-laboratory-name-retrieved"
+  type="text"
+  readonly
+  />
+
+  <label for="hospital-or-laboratory-address-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Address</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="hospital-or-laboratory-address-retrieved"
+  name="hospital-or-laboratory-address-retrieved"
+  type="text"
+  readonly/>
+
+  <label for="hospital-or-laboratory-phonenumber-retrievedr" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Phone Number</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="hospital-or-laboratory-phonenumber-retrieved"
+  name="hospital-or-laboratory-phonenumber-retrieved"
+  type="text"
+  readonly
+  />
+
+  <label for="hospital-or-laboratory-emailaddress-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Email address</label>
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="hospital-or-laboratory-emailaddress-retrieved"
+  name="hospital-or-laboratory-emailaddress-retrieved"
+  type="text"
+  readonly/>
+
+  <!--<label for="general-user-datetosaveinipfs" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Enter data to be saved in IPFS</label>
+  <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+    id="general-user-datatosaveinipfs"
+    name="general-user-datatosaveinipfs"
+    type="text"
+    required
+  />
+
+  <button
+  class="
+  button-reset
+  pv3
+  tc
+  bn
+  bg-animate bg-black-80
+  hover-bg-aqua
+  white
+  pointer
+  w-100
+  "
+  id="savedatainipfs-general-user-submit"
+  type="submit"
+  >
+  Save Data in IPFS
+  </button>
+
+  <h3>Output</h3>
+  <div id="savedatainipfs-general-user-output">Fill output here</div>-->
+</form>
+</main>  <!--Added by Prateek for for showing fields for Hospital or Laboratory after login ends here-->
+
+<main class="pa4-l bg-snow mw7 mv5 center pa4" id="main-doctor-details" hidden> <!--Added by Prateek for for showing fields for doctor after login starts here-->
+  <h1 class="pa0 f2 ma0 mb4 aqua tc">Doctor Screen</h1> 
+  <h3>Doctor details</h3>
+  <form id="doctor-retrieved">
+  <label for="doctor-name-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Name</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="doctor-name-retrieved"
+  name="doctor-name-retrieved"
+  type="text"
+  readonly
+  />
+
+  <label for="doctor-speciality-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Doctor Speciality</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="doctor-speciality-retrieved"
+  name="doctor-speciality-retrieved"
+  type="text"
+  readonly/>
+
+  <label for="doctor-registrationnumber-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Phone Number</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="doctor-registrationnumber-retrieved"
+  name="doctor-registrationnumber-retrieved"
+  type="text"
+  readonly
+  />
+
+  <!--<label for="general-user-datetosaveinipfs" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Enter data to be saved in IPFS</label>
+  <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+    id="general-user-datatosaveinipfs"
+    name="general-user-datatosaveinipfs"
+    type="text"
+    required
+  />
+
+  <button
+  class="
+  button-reset
+  pv3
+  tc
+  bn
+  bg-animate bg-black-80
+  hover-bg-aqua
+  white
+  pointer
+  w-100
+  "
+  id="savedatainipfs-general-user-submit"
+  type="submit"
+  >
+  Save Data in IPFS
+  </button>
+
+  <h3>Output</h3>
+  <div id="savedatainipfs-general-user-output">Fill output here</div>-->
+</form>
+</main>  <!--Added by Prateek for for showing fields for Doctor after login ends here-->
+
+<main class="pa4-l bg-snow mw7 mv5 center pa4" id="main-incurance-company-details" hidden> <!--Added by Prateek for for showing fields for Inurance Company after login starts here-->
+  <h1 class="pa0 f2 ma0 mb4 aqua tc">Insurance Company Screen</h1> 
+  <h3>Insurance Company details</h3>
+  <form id="insurance-company-retrieved">
+  <label for="insurance-company-name-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Name</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="insurance-company-name-retrieved"
+  name="insurance-company-name-retrieved"
+  type="text"
+  readonly
+  />
+
+  <label for="insurance-company-address-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Address</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="insurance-company-address-retrieved"
+  name="insurance-company-address-retrieved"
+  type="text"
+  readonly/>
+
+  <label for="insurance-company-phonenumber-retrievedr" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Phone Number</label
+  >
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="insurance-company-phonenumber-retrieved"
+  name="insurance-company-phonenumber-retrieved"
+  type="text"
+  readonly
+  />
+
+  <label for="insurance-company-emailaddress-retrieved" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Email address</label>
+  <input
+  class="input-reset bn black-80 bg-white pa3 w-100 mb3 ft"
+  id="insurance-company-emailaddress-retrieved"
+  name="insurance-company-emailaddress-retrieved"
+  type="text"
+  readonly/>
+  <!--<label for="general-user-datetosaveinipfs" class="f5 ma0 pb2 tracked aqua fw4 db"
+  >Enter data to be saved in IPFS</label>
+  <input
+    class="input-reset bn black-80 bg-white pa3 w-100 mb3"
+    id="general-user-datatosaveinipfs"
+    name="general-user-datatosaveinipfs"
+    type="text"
+    required
+  />
+
+  <button
+  class="
+  button-reset
+  pv3
+  tc
+  bn
+  bg-animate bg-black-80
+  hover-bg-aqua
+  white
+  pointer
+  w-100
+  "
+  id="savedatainipfs-general-user-submit"
+  type="submit"
+  >
+  Save Data in IPFS
+  </button>
+
+  <h3>Output</h3>
+  <div id="savedatainipfs-general-user-output">Fill output here</div>-->
+</form>
+</main>  <!--Added by Prateek for for showing fields for Insurance Company after login ends here-->
 
 </body>
 </html>
