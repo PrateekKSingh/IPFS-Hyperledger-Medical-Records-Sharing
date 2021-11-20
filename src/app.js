@@ -155,6 +155,30 @@ import { create as ipfsClient } from 'ipfs-client'
   }
   */
  
+  //COLRS object copied from the comment and being included
+  const COLORS = {
+    active: '#357edd',
+    success: '#0cb892',
+    error: '#ea5037'
+  }
+
+  //ShowStatus function copied from the comment and being included  
+  const showStatus = (text, bg) => {
+    console.info(text)
+
+    const log = document.getElementById('login-user-output')
+
+    if (!log) {
+      return
+    }
+
+    const line = document.createElement('p')
+    line.innerText = text
+    line.style.color = bg
+
+    log.appendChild(line)
+  }
+
   //Added by Prateek for inserting general user object in IPFS on register general user button click starts here
   // Event listeners
   document.getElementById('register-general-user-submit').onclick = async (e) => {
@@ -310,6 +334,11 @@ import { create as ipfsClient } from 'ipfs-client'
       //Check whether CID entered already exists in javascript array which stores CIDs (later on this check will be on hyperledger fabric blockchain) ends here
       if (userCIDExists === false)
       {
+        //Make any previously shown screen hidden
+        document.getElementById('main-general-user-details').setAttribute("hidden","true")
+        document.getElementById('main-hospital-or-laboratory-details').setAttribute("hidden","true")
+        document.getElementById('main-doctor-details').setAttribute("hidden","true")
+        document.getElementById('main-incurance-company-details').setAttribute("hidden","true")
         document.getElementById('login-user-output').innerHTML = "<h3>" + "No user registered with this key." + "</h3>"
       }
       else
@@ -322,39 +351,84 @@ import { create as ipfsClient } from 'ipfs-client'
             break;
           case "H":
             userType = "Hospital or Laboratory"
+            mainId = "main-hospital-or-laboratory-details"
             break;
           case "D":
             userType = "Doctor"
+            mainId = "main-doctor-details"
             break;
           case "I":
             userType = "Insurance Company"
+            mainId = "main-incurance-company-details"
             break;
         }
         document.getElementById('login-user-output').innerHTML = "<h3>" + "User is of the type "+userType + ". Login is successful." + "</h3>"
-        //Now show the corresponding screen
+        //Now hide all the screens and then show the corresponding screen. Hiding screens is necessary because on a single page the user can 
+        //login twice and in that case if he logs in again a different user type, the initial screen which became visible should get hidden 
+        document.getElementById('main-general-user-details').setAttribute("hidden","true")
+        document.getElementById('main-hospital-or-laboratory-details').setAttribute("hidden","true")
+        document.getElementById('main-doctor-details').setAttribute("hidden","true")
+        document.getElementById('main-incurance-company-details').setAttribute("hidden","true")
         document.getElementById(mainId).removeAttribute("hidden")
-        //Now get data from IPFS
 
-        //Now another switch case to show html elements of corresponding screens
+        //Now another switch case to fetch values of corresponding user from IPFS based on his IPFS and to show these values on screen
         switch (userType)
         {
-          case "G":
-            userType = "General User"
+          case "General User":
+            //Get data about the logged in user in different variables 
+            g_user_name = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/GeneralUserName'})
+            g_user_age = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/GeneralUserAge'})
+            g_user_address = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/GeneralUserAddress'})
+            g_user_country = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/GeneralUserCountry'})
+            g_user_phonenumber = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/GeneralUserPhoneNumber'})
+            g_user_emailaddress = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/GeneralUserEmailAddress'})
+            //Bind the variables fethched with the input textboxes on screen
+            document.getElementById('general-user-name-retrieved').value = g_user_name.value
+            document.getElementById('general-user-age-retrieved').value = g_user_age.value
+            document.getElementById('general-user-address-retrieved').value = g_user_address.value
+            document.getElementById('general-user-country-retrieved').value = g_user_country.value
+            document.getElementById('general-user-phonenumber-retrieved').value = g_user_phonenumber.value
+            document.getElementById('general-user-emailaddress-retrieved').value = g_user_emailaddress.value
             break;
-          case "H":
-            userType = "Hospital or Laboratory"
+          case "Hospital or Laboratory":
+            //Get data about the logged in user in different variables 
+            h_or_l_name = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/HospitalOrLaboratoryName'})
+            h_or_l_address = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/HospitalOrLaboratoryAddress'})
+            h_or_l_phonenumber = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/HospitalOrLaboratoryPhoneNumber'})
+            h_or_l_emailaddress = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/HospitalOrLaboratoryEmailAddress'})
+            //Bind the variables fethched with the input textboxes on screen
+            document.getElementById('hospital-or-laboratory-name-retrieved').value = h_or_l_name.value
+            document.getElementById('hospital-or-laboratory-address-retrieved').value = h_or_l_address.value
+            document.getElementById('hospital-or-laboratory-phonenumber-retrieved').value = h_or_l_phonenumber.value
+            document.getElementById('hospital-or-laboratory-emailaddress-retrieved').value = h_or_l_emailaddress.value
             break;
-          case "D":
-            userType = "Doctor"
+          case "Doctor":
+            //Get data about the logged in user in different variables 
+            d_name = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/DoctorName'})
+            d_speciality = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/DoctorSpeciality'})
+            d_registrationnumber = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/DoctorRegistrationNumber'})
+            //Bind the variables fethched with the input textboxes on screen
+            document.getElementById('doctor-name-retrieved').value = d_name.value
+            document.getElementById('doctor-speciality-retrieved').value = d_speciality.value
+            document.getElementById('doctor-registrationnumber-retrieved').value = d_registrationnumber.value
             break;
-          case "I":
-            userType = "Insurance Company"
+          case "Insurance Company":
+            //Get data about the logged in user in different variables 
+            ic_name = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/InsuranceCompanyName'})
+            ic_address = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/InsuranceCompanyAddress'})
+            ic_phonenumber = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/InsuranceCompanyPhoneNumber'})
+            ic_emailaddress = await ipfs_core.dag.get(IPFS.CID.parse(login_key), {path: '/InsuranceCompanyEmailAddress'})
+            //Bind the variables fethched with the input textboxes on screen
+            document.getElementById('insurance-company-name-retrieved').value = ic_name.value
+            document.getElementById('insurance-company-address-retrieved').value = ic_address.value
+            document.getElementById('insurance-company-phonenumber-retrieved').value = ic_phonenumber.value
+            document.getElementById('insurance-company-emailaddress-retrieved').value = ic_emailaddress.value
             break;
         } 
       } 
     } catch (err) {
       showStatus(err.message, COLORS.error)
-      console.error(err)
+      //console.error(err)
     }
   }
   //Added by Prateek for logging in user on user login button click ends here
